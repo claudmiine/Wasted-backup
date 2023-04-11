@@ -39,9 +39,9 @@
             v-model="password"
             :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             :rules="[rules.required, rules.min]"
-            :type="show1 ? 'text' : ''"
+            :type="show1 ? 'text' : 'password'"
             name="input-10-1"
-            label="Password"
+            label="Normal with hint text"
             hint="At least 8 characters"
             counter
             @click:append="show1 = !show1"
@@ -68,13 +68,13 @@ Sign up! </v-btn>
 
 <script>
 
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default{
 name: 'RegisterView',
 data() {
 return {
-    email:"",
+    email:'',
     // password:"",
     show1: false,
         show2: true,
@@ -87,7 +87,26 @@ return {
           emailMatch: () => (`The email and password you entered don't match`),
         }
     };
+    }, 
+    methods: {
+register(){
+
+const auth = getAuth();
+createUserWithEmailAndPassword(auth, this.email, this.password)
+  .then((userCredential) => {
+    // console.log("Dzialam")
+    // const user = userCredential.user;
+    console.log('Successfully registered!!!!!!!!!!!!:', userCredential.user);
+  })
+      .catch((error) => {
+        // Error occurred during registration
+        this.error = error.message;
+        console.error('Registration error:', error);
+  });
+
+      }
     }
+    
 }
 // methods: {
 // register(){

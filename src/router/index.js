@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-// import DashboardView from '../views/DashboardView.vue'
+import DashboardView from '../views/DashboardView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 
@@ -21,12 +21,12 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   // },
-  // {
-  //     path: '/dashboard',
-  //     name: 'dashboard',
-  //     component: DashboardView
+  {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: DashboardView
       
-  // }
+  },
   {
       path: '/login',
       name: 'login',

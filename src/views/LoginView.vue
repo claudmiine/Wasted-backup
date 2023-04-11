@@ -1,9 +1,7 @@
 <template>
   <div class="login">
     <h1>Sign in</h1>
-    <!-- <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br> -->
-
+    
      <v-form v-model="valid">
     <v-container>
       <v-row>
@@ -41,15 +39,15 @@
             @click:append="show1 = !show1"
           ></v-text-field>
 
-    <v-btn 
-  depressed
-  elevation="2"
-  rounded
-  text
-  @click="login">
-Login </v-btn>
+            <v-btn 
+        depressed
+        elevation="2"
+        rounded
+        text
+        @click="login">
+        Login </v-btn>
   
-                <p> Don't have an account? You can <router-link to="/register">create one.</router-link></p>
+        <p> Don't have an account? You can <router-link to="/register">create one.</router-link></p>
 
         </v-col>
         </v-row>
@@ -61,7 +59,7 @@ Login </v-btn>
 
 <script>
 
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default {
 name: 'LoginView',
@@ -69,37 +67,38 @@ data() {
     return{
     email:'',
     // password:'',
-  show1: false,
-        show2: true,
-        show3: false,
-        show4: false,
-        password: 'Password',
-        rules: {
+    show1: false,
+    show2: true,
+    show3: false,
+    show4: false,
+    password: '',
+    rules: {
           required: value => !!value || 'Required.',
           min: v => v.length >= 8 || 'Min 8 characters',
           emailMatch: () => (`The email and password you entered don't match`),
         }
     };
-// },
-// methods: {
-//     login: function(){
-//     const auth = getAuth();
-// signInWithEmailAndPassword(auth, this.email, this.password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//      console.log('Successfully logged in:', userCredential.user);
-//      this.$router.replace('landingpage')
-//   })
-//   .catch((error) => {
-//         // Error occurred during registration
-//         this.error = error.message;
-//         console.error('Login error:', error);
-//   });
-//     }
-// }
+},
+    methods: {
+    login: function(){
+    const auth = getAuth();
+signInWithEmailAndPassword(auth, this.email, this.password)
+  .then((userCredential) => {
+    // Signed in 
+    // const user = userCredential.user;
+     console.log('Successfully logged in:', userCredential.user);
+     this.$router.replace('dashboard')
+  })
+  .catch((error) => {
+        // Error occurred during registration
+        this.error = error.message;
+        console.error('Login error:', error);
+  });
+    }
 }
+
 }
+
 
 
 </script>
