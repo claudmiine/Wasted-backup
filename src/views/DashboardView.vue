@@ -1,76 +1,45 @@
 <template>
   <div class="logout">
     <h1>Your calendar</h1>
-    <!-- <v-btn
-    class="logoutBtn"
-  elevation="2"
-  rounded
-  small
-  @click="logout"
->Log out</v-btn> -->
-
-<v-sheet
-      tile
-      height="54"
-      class="d-flex"
-    >
-      <v-btn
-        icon
-        class="ma-2"
-        @click="$refs.calendar.prev()"
-      >
-        <v-icon>mdi-chevron-left</v-icon>
-      </v-btn>
-      <v-select
-        v-model="type"
-        :items="types"
-        dense
-        outlined
-        hide-details
-        class="ma-2"
-        label="type"
-      ></v-select>
-      <v-select
-        v-model="mode"
-        :items="modes"
-        dense
-        outlined
-        hide-details
-        label="event-overlap-mode"
-        class="ma-2"
-      ></v-select>
-      <v-select
-        v-model="weekday"
-        :items="weekdays"
-        dense
-        outlined
-        hide-details
-        label="weekdays"
-        class="ma-2"
-      ></v-select>
-      <v-spacer></v-spacer>
-      <v-btn
-        icon
-        class="ma-2"
-        @click="$refs.calendar.next()"
-      >
-        <v-icon>mdi-chevron-right</v-icon>
-      </v-btn>
-    </v-sheet>
+   
     <v-sheet height="600">
+    
       <v-calendar
         ref="calendar"
         v-model="value"
-        :weekdays="weekday"
-        :type="type"
-        :events="events"
-        :event-overlap-mode="mode"
         :event-overlap-threshold="30"
         :event-color="getEventColor"
-        @change="getEvents"
+        @click:day="showCreateEventDialog"
       ></v-calendar>
     </v-sheet>
-
+<v-dialog v-model="showDialog" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Add event</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="12">
+                <v-select
+                  :items="['plastic', 'metal', 'paper']"
+                  label="Trash type"
+                  required
+                ></v-select>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="showDialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" text @click="showDialog = false">Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    
+    <h2> Your next collection</h2>
+    
 <v-card
     class="mx-auto"
     max-width="344"
@@ -197,49 +166,30 @@ In conclusion, plastic bags are a major source of pollution on our planet
   export default {
     data: () => ({
     show: false,
-      type: 'month',
-      types: ['month', 'week', 'day', '4day'],
-      mode: 'stack',
-      modes: ['stack', 'column'],
-      weekday: [0, 1, 2, 3, 4, 5, 6],
-      weekdays: [
-        { text: 'Sun - Sat', value: [0, 1, 2, 3, 4, 5, 6] },
-        { text: 'Mon - Sun', value: [1, 2, 3, 4, 5, 6, 0] },
-        { text: 'Mon - Fri', value: [1, 2, 3, 4, 5] },
-        { text: 'Mon, Wed, Fri', value: [1, 3, 5] },
-      ],
+    showDialog: false,
+      selectedDay: {},
       value: '',
       events: [],
       colors: ['blue', 'green', 'yellow', 'brown', 'red', 'orange', ],
       names: ['Glass', 'Recycling', 'Garden Waste', 'Plastic', 'Metal', 'Mixed Waste'],
     }),
     methods: {
-      getEvents ({ start, end }) {
-        const events = []
-
-        const min = new Date(`${start.date}T00:00:00`)
-        const max = new Date(`${end.date}T23:59:59`)
-        const days = (max.getTime() - min.getTime()) / 86400000
-        const eventCount = this.rnd(days, days + 20)
-
-        for (let i = 0; i < eventCount; i++) {
-          const allDay = this.rnd(0, 3) === 0
-          const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-          const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-          const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-          const second = new Date(first.getTime() + secondTimestamp)
-
-          events.push({
-            name: this.names[this.rnd(0, this.names.length - 1)],
-            start: first,
-            end: second,
-            color: this.colors[this.rnd(0, this.colors.length - 1)],
-            timed: !allDay,
+      dupa(day){
+        console.log(day)
+        this.events.push({
+            name:  "hhggg",
+            start: day.start,
+            end: day.end,
+            color: "blue",
+            timed: false,
           })
-        }
-
-        this.events = events
+    
       },
+      showCreateEventDialog(day){
+      this.showDialog = true
+        this.selectedDay=day
+      },
+       
       getEventColor (event) {
         return event.color
       },
@@ -274,5 +224,26 @@ In conclusion, plastic bags are a major source of pollution on our planet
       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 
   }
+  h1 {
+  font-size: 56px;
+  font-family: sans-serif;
+  text-align: left;
+  margin-bottom: 24px;
+  color:#333333
+}
+h2 {
+  font-size: 56px;
+  font-family: sans-serif;
+  text-align: center;
+  margin-bottom: 24px;
+  color:#333333;
+  margin: 50px;
+}
+.logout{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 }
 </style>

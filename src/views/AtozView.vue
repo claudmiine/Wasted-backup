@@ -1,8 +1,10 @@
 <template>
+<div>
+<h2>What to do with…?</h2>
+<h3>Don’t mix the waste again! Use our handy A-Z guide to help you recycle like a master! </h3>
   <v-card
     class="mx-auto"
-    width="auto"
-  >
+    width="auto">
     <v-list>
 
         <v-list-group
@@ -15,18 +17,16 @@
             </v-list-item-content>
           </template>
 
-          <!-- <v-list-item
-            v-for="([title, icon], i) in cruds"
-            :key="i"
-            link
-          > -->
-          <p>Tip: use pump sprays instead  </p>
+          
+          <p>Tip: Use pump sprays instead.  </p>
+          <p> Bin? Green bin</p>
+    <img alt="Recycling photo" class="recycling" src="@/assets/plastic (1).png" width="35" height="35" />
             <v-list-item-title v-text="title"></v-list-item-title>
 
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
-          <!-- </v-list-item> -->
+         
       </v-list-group>
       
       <v-list-group
@@ -35,26 +35,47 @@
         >
           <template v-slot:activator>
             <v-list-item-content>
-              <v-list-item-title>Glass jar</v-list-item-title>
+              <v-list-item-title>Aluminium cans </v-list-item-title>
             </v-list-item-content>
           </template>
 
-          <v-list-item
-            v-for="([img, title], i) in cruds"
-            :key="i"
-            link
-          >
-           <v-list-item-icon>
-             <img :src="img" height="20px" width="20px">
-            </v-list-item-icon>
+          
+          <p>Tip: Wash and squash to prevent smells and protect wildlife. </p>
+          <p> Bin? Green bin</p>
+    <img alt="Recycling photo" class="recycling" src="@/assets/plastic (1).png" width="35" height="35" />
             <v-list-item-title v-text="title"></v-list-item-title>
-<p>hejk</p>
-           
-          </v-list-item>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+         
+      </v-list-group>
+      
+      <v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Aluminium foil </v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          
+          <p>Tip: Foil containers are reusable (freezing leftovers, seed trays) </p>
+          <p> Bin? Green bin</p>
+    <img alt="Recycling photo" class="recycling" src="@/assets/plastic (1).png" width="35" height="35" />
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+         
       </v-list-group>
       
     </v-list>
   </v-card>
+  </div>
 </template>
 
 <script>
@@ -69,3 +90,12 @@
     }),
   }
 </script>
+<style>
+h2 h3 {
+  font-size: 56px;
+  font-family: sans-serif;
+  text-align: left;
+  margin-bottom: 24px;
+  color:#333333
+  
+}</style>
