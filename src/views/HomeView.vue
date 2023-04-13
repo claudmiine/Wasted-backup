@@ -1,9 +1,9 @@
 <template>
   <main>
-  <div>
-    <h1 class="green">{{ msg }}</h1>
-    
-   <h3 class="joinus"> Join us and let’s change the world together!</h3>
+  <div class="container">
+   
+    <h1>Wasted</h1>
+   <h2> Join us and let’s change the world together!</h2>
       <h3>Wasted helps you to make your waste management easier.</h3>
     <img alt="Recycling photo" class="recycling" src="@/assets/recycling.png" width="300" height="300" />
     
@@ -23,14 +23,13 @@
       @click="toregister"
     >Sign up</v-btn>
 
-      <h3 class="joinus"> Personal experience</h3>
+      <h2> Personal experience just for you</h2>
       <p>Create personalised calendar for your collection day and more!</p>
       <br>
        <img alt="Calendar photo" class="calendar" src="@/assets/Calendar.png" width="300" height="250" />
 
-      <h3 class="joinus">Accessible knowledge at your’s fingertipsAccessible knowledge at your’s fingertips</h3>
+      <h2>Accessible knowledge at your’s fingertips</h2>
       <p>Our information and resources are readily available to you.</p>
-      This project is served and bundled with
       <br>
        <img alt="Phone photo" class="phone" src="@/assets/Phone.png" width="300" height="300" />
   
@@ -51,3 +50,33 @@ export default {
   }
 }
 </script>  
+
+<style>
+@media (max-width: 1024px){
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+p {
+font-size: 20px;
+font-family: sans-serif;
+}
+h1 {
+  font-size: 56px;
+  font-family: sans-serif;
+  text-align: left;
+  margin-bottom: 24px;
+  color:#333333
+}
+p {
+color: #333333
+}
+h3 {
+ color: #333333}
+}
+h2 {
+ color: #333333
+}
+  </style>

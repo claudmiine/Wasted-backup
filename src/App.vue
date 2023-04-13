@@ -25,8 +25,10 @@
           active-class="light-green lighten-3 text--accent-4"
         >
           <v-list-item>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item>
+<v-btn text @click="home">
+      Home
+    </v-btn>          
+    </v-list-item>
 
           <v-list-item>
             <v-btn text @click="atoz">
@@ -71,6 +73,9 @@ data: () => ({
       },
     },
     methods: {
+    home() {
+      this.$router.push('/dashboard')
+    },
     atoz() {
       this.$router.push('/atoz')
     },
