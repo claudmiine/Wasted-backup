@@ -7,6 +7,7 @@
       <v-calendar
         ref="calendar"
         v-model="value"
+        :events="events"
         :event-overlap-threshold="30"
         :event-color="getEventColor"
         @click:day="showCreateEventDialog"
@@ -22,9 +23,12 @@
             <v-row>
               <v-col cols="12" sm="12">
                 <v-select
-                  :items="['plastic', 'metal', 'paper']"
-                  label="Trash type"
-                  required
+                  v-model="selectedWaste"
+                  :items="wasteType"
+                  item-text="text"
+                  label="Waste type"
+                  return-object
+                  single-line
                 ></v-select>
               </v-col>
             </v-row>
@@ -33,7 +37,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="showDialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="showDialog = false">Save</v-btn>
+          <v-btn color="blue darken-1" text @click="saveEvent">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -162,28 +166,48 @@ In conclusion, plastic bags are a major source of pollution on our planet
 
 <script>
 // import { getAuth, signOut } from "firebase/auth";
+import firebase from 'firebase/app';
 
   export default {
     data: () => ({
     show: false,
     showDialog: false,
       selectedDay: {},
+      selectedWaste:{},
       value: '',
       events: [],
       colors: ['blue', 'green', 'yellow', 'brown', 'red', 'orange', ],
       names: ['Glass', 'Recycling', 'Garden Waste', 'Plastic', 'Metal', 'Mixed Waste'],
+      wasteType: [
+          { text: 'Glass', key: 'glass', color:"blue" },
+          { text: 'Recycling', key: 'recycling', color:"green" },
+          { text: 'General Waste', key: 'general_waste', color:"red" },
+        ],
     }),
+    created() {
+    const db = firebase.firestore();
+    db.collection('events').get().then((querySnapshot) => {
+      const events = [];
+      console.log(querySnapshot)
+      querySnapshot.forEach((doc) => {
+        events.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      });
+      this.events = events;
+    });
+  },
     methods: {
-      dupa(day){
-        console.log(day)
+      saveEvent(){
         this.events.push({
-            name:  "hhggg",
-            start: day.start,
-            end: day.end,
-            color: "blue",
+            name:  `${this.selectedWaste.text} collection`,
+            start: new Date(this.selectedDay.date),
+            end: new Date(this.selectedDay.date),
+            color: this.selectedWaste.color,
             timed: false,
           })
-    
+    this.showDialog=false
       },
       showCreateEventDialog(day){
       this.showDialog = true

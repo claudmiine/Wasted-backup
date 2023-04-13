@@ -2,6 +2,7 @@
 <div>
 <h2>What to do with…?</h2>
 <h3>Don’t mix the waste again! Use our handy A-Z guide to help you recycle like a master! </h3>
+
   <v-card
     class="mx-auto"
     width="auto">
@@ -26,7 +27,6 @@
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
             </v-list-item-icon>
-         
       </v-list-group>
       
       <v-list-group
@@ -81,12 +81,6 @@
 <script>
   export default {
     data: () => ({
-      cruds: [
-        ["./assets/plastic (1).png",'Bin' ],
-        ['Read', 'mdi-file-outline'],
-        ['Update', 'mdi-update'],
-        ['Delete', 'mdi-delete'],
-      ],
     }),
   }
 </script>
