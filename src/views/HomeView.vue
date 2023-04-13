@@ -1,15 +1,27 @@
 <template>
   <main>
-  <div class="greetings">
+  <div>
     <h1 class="green">{{ msg }}</h1>
     
    <h3 class="joinus"> Join us and let’s change the world together!</h3>
       <h3>Wasted helps you to make your waste management easier.</h3>
     <img alt="Recycling photo" class="recycling" src="@/assets/recycling.png" width="300" height="300" />
     
+  
+    <v-btn
+      rounded
+      outlined
+      color="light-green darken-2"
+      dark
+      @click="tologin"
+    >Login</v-btn>
     
-          <button><router-link to="/login">Login</router-link></button>
-           <button><router-link to="/register">Register</router-link></button>
+    <v-btn
+      rounded
+      color="light-green darken-2"
+      dark
+      @click="toregister"
+    >Sign up</v-btn>
 
       <h3 class="joinus"> Personal experience</h3>
       <p>Create personalised calendar for your collection day and more!</p>
@@ -27,6 +39,15 @@
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
 
+export default {
+  methods: {
+    tologin() {
+      this.$router.push('/login')
+    },
+    toregister(){
+    this.$router.push('/register')
+    }
+  }
+}
 </script>  

@@ -1,6 +1,9 @@
 <template>
   <div class="login">
+    <img alt="Recycling photo" class="login_pic" src="@/assets/login_pic.png" width="216.78" height="162.86" />
+
     <h1>Sign in</h1>
+    <h3>Join us for free and let’s change the world together! </h3>
     
      <v-form v-model="valid">
     <v-container>
@@ -40,15 +43,15 @@
           ></v-text-field>
 
             <v-btn 
-        depressed
-        elevation="2"
         rounded
-        text
+      color="light-green darken-2"
+      dark
+      
         @click="login">
         Login </v-btn>
   
         <p> Don't have an account? You can <router-link to="/register">create one.</router-link></p>
-
+<p> By continuing, you agree to our Terms of Service and Privacy Policy</p>
         </v-col>
         </v-row>
         </v-container>
@@ -131,6 +134,9 @@ signInWithEmailAndPassword(auth, this.email, this.password)
     text-decoration: underline;
     cursor: pointer;
   }
-
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+}
 }
 </style>
