@@ -30,7 +30,7 @@
       </v-card>
     </v-dialog>
 
-    <h2> Your next collection</h2>
+    <h1> Your next collection</h1>
 
     <v-card class="mx-auto" max-width="344">
       <v-img src="@/assets/plastic.jpg" height="200px"></v-img>
@@ -44,7 +44,7 @@
       </v-card-subtitle>
 
       <v-card-actions>
-        <v-btn color="orange lighten-2" text>
+        <v-btn color="light-green darken-3" text>
           Read more
         </v-btn>
 
@@ -87,7 +87,7 @@
         </div>
       </v-expand-transition>
     </v-card>
-
+<br>
 
     <v-card class="mx-auto" max-width="344">
       <v-img src="@/assets/earth.jpg" height="200px"></v-img>
@@ -101,7 +101,7 @@
       </v-card-subtitle>
 
       <v-card-actions>
-        <v-btn color="orange lighten-2" text>
+        <v-btn color="light-green darken-3" text>
           Read more
         </v-btn>
 
@@ -235,40 +235,43 @@ export default {
 </script>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
+@media (max-width: 1024px) {
+  /* .about {
     min-height: 100vh;
     display: flex;
     align-items: center;
-  }
+  } */
 
-  div {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  /* div {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; */
 
-  }
+  /* } */
 
   h1 {
-    font-size: 56px;
-    font-family: sans-serif;
+    font-size: 48px;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: left;
-    margin-bottom: 24px;
+    margin: 10px ;
     color: #333333
   }
 
   h2 {
-    font-size: 56px;
-    font-family: sans-serif;
-    text-align: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    /* text-align: center; */
     margin-bottom: 24px;
     color: #333333;
-    margin: 50px;
+    margin-top: 50px;
   }
 
-  .logout {
+  /* .logout {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  } */
+  v-card {
+    margin-top: 20px;
   }
 }
 </style>
