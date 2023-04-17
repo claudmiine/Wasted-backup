@@ -24,12 +24,12 @@
     >Sign up</v-btn>
 
       <h2> Personal experience just for you</h2>
-      <p>Create personalised calendar for your collection day and more!</p>
+      <h4>Create personalised calendar for your collection day and more!</h4>
       <br>
        <img alt="Calendar photo" class="calendar" src="@/assets/Calendar.png" width="300" height="250" />
 
       <h2>Accessible knowledge at your’s fingertips</h2>
-      <p>Our information and resources are readily available to you.</p>
+      <h4>Our information and resources are readily available to you.</h4>
       <br>
        <img alt="Phone photo" class="phone" src="@/assets/Phone.png" width="300" height="300" />
   
@@ -53,30 +53,32 @@ export default {
 
 <style>
 @media (max-width: 1024px){
-.container {
+/* .container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
+} */
 p {
 font-size: 20px;
-font-family: sans-serif;
 }
 h1 {
   font-size: 56px;
-  font-family: sans-serif;
+  font-family: Helvetica;
   text-align: left;
   margin-bottom: 24px;
   color:#333333
 }
-p {
-color: #333333
+
+
 }
-h3 {
- color: #333333}
-}
-h2 {
+p h2 h3 h4{
+font-family: Arial, Helvetica, sans-serif;
  color: #333333
 }
+img {
+  margin-top: 24px;
+
+}
+
   </style>
