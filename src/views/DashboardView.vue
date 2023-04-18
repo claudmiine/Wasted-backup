@@ -30,7 +30,12 @@
       </v-card>
     </v-dialog>
 
+    <!-- <ArticleView img-src='@/assets/Phone.png'/> -->
+
     <h1> Your next collection</h1>
+
+
+
 
     <v-card class="mx-auto" max-width="344">
       <v-img src="@/assets/plastic.jpg" height="200px"></v-img>
@@ -87,7 +92,7 @@
         </div>
       </v-expand-transition>
     </v-card>
-<br>
+    <br>
 
     <v-card class="mx-auto" max-width="344">
       <v-img src="@/assets/earth.jpg" height="200px"></v-img>
@@ -159,8 +164,12 @@
 <script>
 // import { getAuth, signOut } from "firebase/auth";
 import firebase from 'firebase/app';
+// import ArticleView from '@/components/ArticleView.vue';
 
 export default {
+  components: {
+    // ArticleView,
+  },
   data: () => ({
     show: false,
     showDialog: false,
@@ -251,7 +260,7 @@ export default {
     font-size: 48px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
-    margin: 10px ;
+    margin: 10px;
     color: #333333
   }
 
