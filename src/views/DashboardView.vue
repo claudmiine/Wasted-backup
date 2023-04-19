@@ -30,7 +30,8 @@
       </v-card>
     </v-dialog>
 
-    <ArticleView img-name="earth.jpg" category="Recycling" />
+    <ArticleView img-name="earth.jpg" category="Recycling"
+      title="The Importance of Recycling: Reducing Waste and Protecting the Environment" />
 
     <h1> Your next collection</h1>
 
@@ -241,7 +242,7 @@ export default {
     // });
     //     }
   },
-  
+
   computed: {
     nextCollection() {
       // Assume your array is called "myArray"

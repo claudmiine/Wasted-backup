@@ -1,9 +1,9 @@
 <template>
   <v-card class="mx-auto" max-width="344">
     <!-- <v-img :src="`../assets/${imgName}`" height="200px"></v-img> -->
-    <img :src="require(`@/assets/${imgName}`)"  height="200px">
+    <img :src="require(`@/assets/${imgName}`)" width="200px" height="200px">
     <v-card-title>
-      The Importance of Recycling: Reducing Waste and Protecting the Environment
+      {{title }}
     </v-card-title>
 
     <v-card-subtitle>
@@ -74,6 +74,11 @@ export default {
  
     },
     category: {
+      type: String,
+      required: true,
+
+    },
+    title: {
       type: String,
       required: true,
 
