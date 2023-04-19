@@ -3,6 +3,7 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import { initializeApp } from "firebase/app";
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 import router from './router'
 console.log("dzialam", process.env.VUE_APP_API_KEY)
@@ -13,13 +14,14 @@ const firebaseConfig = {
   projectId: process.env.VUE_APP_PROJECTID,
   storageBucket: process.env.VUE_APP_STORAGEBUCKET,
   messagingSenderId: process.env.VUE_APP_MESSAGINGSENDERID,
-  appId: process.env.VUE_APP_APPID
+  appId: process.env.VUE_APP_APPID,
+  databaseURL: "https://wastedapp-7b023-default-rtdb.firebaseio.com",
 };
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 //  firebase.initializeApp(firebaseConfig);
 initializeApp(firebaseConfig);
-
+const database = getDatabase(app);
 // const auth = getAuth();
 // onAuthStateChanged(auth, (user) => {
 //   if (user) {
