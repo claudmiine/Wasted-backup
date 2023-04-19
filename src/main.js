@@ -5,14 +5,15 @@ import { initializeApp } from "firebase/app";
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import router from './router'
+console.log("dzialam", process.env.VUE_APP_API_KEY)
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyBLP0ih0c89-eVk9XJfVqFbrzdsegtiWKI",
-  authDomain: "wastedapp-7b023.firebaseapp.com",
-  projectId: "wastedapp-7b023",
-  storageBucket: "wastedapp-7b023.appspot.com",
-  messagingSenderId: "988942344453",
-  appId: "1:988942344453:web:98cb2c2850fd4a1204976c"
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTHDOMAIN,
+  projectId: process.env.VUE_APP_PROJECTID,
+  storageBucket: process.env.VUE_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGINGSENDERID,
+  appId: process.env.VUE_APP_APPID
 };
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
@@ -26,7 +27,7 @@ initializeApp(firebaseConfig);
 //     // router.push({ path: 'landingpage' })
 //     // User is signed in, see docs for a list of available properties
 //     // https://firebase.google.com/docs/reference/js/firebase.User
-   
+
 //     // ...
 //   } else {
 //     console.log('user is not sign in')

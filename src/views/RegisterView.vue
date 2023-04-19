@@ -1,5 +1,7 @@
 <template>
   <div class="register">
+      <img alt="Recycling photo" class="login_pic" src="@/assets/login_pic.png" width="216.78" height="162.86" />
+
     <h1>Sign up</h1>
     
   <v-form v-model="valid">
@@ -48,13 +50,16 @@
           ></v-text-field>
 
     <v-btn 
-  depressed
   elevation="2"
+  color="light-green darken-2"
   rounded
-  text
+  dark
   @click="register">
 Sign up! </v-btn>
-  
+  <div v-if="registrationSuccess">
+  <br>
+  <p>{{ registrationMessage }}</p>
+  </div>
     <span> Go back to <router-link to="/login">login.</router-link></span>
 
         </v-col>
@@ -74,7 +79,9 @@ export default{
 name: 'RegisterView',
 data() {
 return {
-    email:'',
+  email: '',
+  registrationSuccess: false,
+  registrationMessage: '',
     // password:"",
     show1: false,
         show2: true,
@@ -94,8 +101,9 @@ register(){
 const auth = getAuth();
 createUserWithEmailAndPassword(auth, this.email, this.password)
   .then((userCredential) => {
-    // console.log("Dzialam")
     // const user = userCredential.user;
+    this.registrationSuccess = true;
+    this.registrationMessage = "You have successfully registered! Go back to login";
     console.log('Successfully registered!!!!!!!!!!!!:', userCredential.user);
   })
       .catch((error) => {
@@ -144,6 +152,18 @@ cursor: pointer;
 span{
 display: block;
 margin-top: 20px;
-font-size: 11px;
+font-size: 14px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+}
+img{
+align-items: center;
+}
+p{
+color:darkgreen
+}
+.login_pic {
+  display: block;
+  margin: 0 auto;
 }
 </style>

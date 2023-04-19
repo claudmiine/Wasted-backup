@@ -2,6 +2,7 @@
   <div>
     <h1>What to do with…?</h1>
     <h3>Don’t mix the waste again! Use our handy A-Z guide to help you recycle like a master! </h3>
+      <img alt="Recycling photo" class="login_pic" src="@/assets/confetti 1.png" width="151" height="151" />
 
     <v-card class="mx-auto" width="auto">
       <v-list>
@@ -99,7 +100,10 @@ export default {
     font-size: large;
     color: #333333;
   }
-
+.login_pic {
+  display: block;
+  margin: 0 auto;
+}
   v-list-item-title {
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;

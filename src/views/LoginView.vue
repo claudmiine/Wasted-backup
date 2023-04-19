@@ -95,7 +95,10 @@ export default {
   .login {
     margin-top: 40px auto;
   }
-
+.login_pic {
+  display: block;
+  margin: 0 auto;
+}
   input {
     /* margin:10px ; */
     width: auto;
