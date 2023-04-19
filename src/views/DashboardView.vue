@@ -30,11 +30,11 @@
       </v-card>
     </v-dialog>
 
-    <!-- <ArticleView img-src='@/assets/Phone.png'/> -->
+    <ArticleView img-name="earth.jpg" category="Recycling" />
 
     <h1> Your next collection</h1>
 
-
+    <p>{{ nextCollection }}</p>
 
 
     <v-card class="mx-auto" max-width="344">
@@ -164,11 +164,11 @@
 <script>
 // import { getAuth, signOut } from "firebase/auth";
 import firebase from 'firebase/app';
-// import ArticleView from '@/components/ArticleView.vue';
+import ArticleView from '@/components/ArticleView.vue';
 
 export default {
   components: {
-    // ArticleView,
+    ArticleView,
   },
   data: () => ({
     show: false,
@@ -226,6 +226,7 @@ export default {
         this.events = events;
       });
     },
+
     //       logout: function (){
     //       const auth = getAuth();
     //     signOut(auth).then(() => {
@@ -240,6 +241,27 @@ export default {
     // });
     //     }
   },
+  
+  computed: {
+    nextCollection() {
+      // Assume your array is called "myArray"
+      const currentDate = new Date();
+
+      // Filter the array to get only objects with start dates in the future
+      const futureObjects = this.events.filter((obj) => obj.start > currentDate);
+
+      // Sort the filtered array by start dates in ascending order
+      futureObjects.sort((a, b) => a.start - b.start);
+
+      // If there are no future objects, return null
+      if (futureObjects.length === 0) {
+        return null;
+      }
+
+      // Otherwise, return the object with the soonest start date
+      return futureObjects[0];
+    }
+  }
 }
 </script>
 
