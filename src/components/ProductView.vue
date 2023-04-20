@@ -7,9 +7,8 @@
         </template>
 
 
-        <p>Tip: Use pump sprays instead. </p>
+        <p> Tip </p>
         <p> Bin? Green bin</p>
-        <img alt="Recycling photo" class="recycling" src="@/assets/plastic (1).png" width="35" height="35" />
         <v-list-item-title v-text="title"></v-list-item-title>
 
         <v-list-item-icon>
