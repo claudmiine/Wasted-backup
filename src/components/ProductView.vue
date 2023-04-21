@@ -2,14 +2,14 @@
     <v-list-group no-action sub-group>
         <template v-slot:activator>
             <v-list-item-content>
-                <v-list-item-title>Aerosols </v-list-item-title>
+                <v-list-item-title>{{title}} </v-list-item-title>
             </v-list-item-content>
         </template>
 
 
-        <p> Tip </p>
-        <p> Bin? Green bin</p>
-        <v-list-item-title v-text="title"></v-list-item-title>
+        <p> {{tip}} </p>
+        <p> {{bin}}</p>
+        
 
         <v-list-item-icon>
             <v-icon v-text="icon"></v-icon>
@@ -29,7 +29,15 @@ export default {
         };
     },
     props: {
-        imgSrc: {
+        tip: {
+            type: String,
+            required: true,
+        },
+        bin: {
+            type: String,
+            required: true,
+        },
+        title: {
             type: String,
             required: true,
         }
