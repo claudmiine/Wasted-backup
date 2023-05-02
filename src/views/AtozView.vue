@@ -1,9 +1,10 @@
 <template>
   <div>
+    <div class="atozcontent">
     <h1>What to do with…?</h1>
     <h3>Don’t mix the waste again! Use our handy A-Z guide to help you recycle like a master! </h3>
     <img alt="Recycling photo" class="login_pic" src="@/assets/confetti 1.png" width="151" height="151" />
-
+    </div>
     <v-card class="mx-auto" width="auto">
       <v-list>
 
@@ -41,7 +42,16 @@ export default {
   }),
 }
 </script>
+
 <style>
+.atozcontent{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 10vh;
+
+}
+
 @media (max-width: 1024px) {
   h2 h3 {
     font-size: 56px;

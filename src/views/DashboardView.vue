@@ -40,7 +40,7 @@
     <v-alert v-else shaped dark color="danger" style="margin: 20px;"> You don’t have collections soon </v-alert>
 
 
-
+<div class="contentArticles">
 
     <ArticleView img-name="earth.jpg" category="Recycling"
       title="The Importance of Recycling: Reducing Waste and Protecting the Environment" text="          Recycling is an important practice that has gained significant attention in recent years. It involves the
@@ -91,7 +91,7 @@
       " />
 
 
-
+    </div>
   </div>
 </template>
 
@@ -202,6 +202,11 @@ export default {
 </script>
 
 <style>
+
+  .contentArticles{
+    display: flex;
+    flex-direction: row;
+  }
 @media (max-width: 1024px) {
 
 
@@ -225,6 +230,9 @@ export default {
   v-card {
     margin-top: 20px;
   }
-
+  .contentArticles{
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>
