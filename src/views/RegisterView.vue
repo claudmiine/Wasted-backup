@@ -116,25 +116,6 @@ createUserWithEmailAndPassword(auth, this.email, this.password)
     }
     
 }
-// methods: {
-// register(){
-
-// const auth = getAuth();
-// createUserWithEmailAndPassword(auth, this.email, this.password)
-//   .then((userCredential) => {
-//     // console.log("Dzialam")
-//     // const user = userCredential.user;
-//     console.log('Successfully registered!!!!!!!!!!!!:', userCredential.user);
-//   })
-//       .catch((error) => {
-//         // Error occurred during registration
-//         this.error = error.message;
-//         console.error('Registration error:', error);
-//   });
-
-//       }
-//     }
-
 </script>
 
 <style scoped>
