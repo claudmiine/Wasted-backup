@@ -44,6 +44,7 @@ export default {
 </script>
 
 <style>
+
 .atozcontent{
 display: flex;
 flex-direction: column;
@@ -88,5 +89,11 @@ margin: 10vh;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
+  .atozcontent{
+display: flex;
+align-items: left;
+margin: 0vh;
+
+}
 }
 </style>

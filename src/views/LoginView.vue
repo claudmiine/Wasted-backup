@@ -19,9 +19,17 @@
       <v-container fluid>
         <v-row>
           <v-col cols="12" sm="6">
-            <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-              :rules="[rules.required, rules.min]" :type="show1 ? 'text' : ''" name="input-10-1" label="Password"
-              hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
+            <v-text-field
+            v-model="password"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            :rules="[rules.required, rules.min]"
+            :type="show1 ? 'text' : 'password'"
+            name="input-10-1"
+            label="Normal with hint text"
+            hint="At least 8 characters"
+            counter
+            @click:append="show1 = !show1"
+          ></v-text-field>
 
             <v-btn rounded color="light-green darken-2" dark @click="login">
               Login </v-btn>
@@ -95,10 +103,12 @@ export default {
   .login {
     margin-top: 40px auto;
   }
-.login_pic {
-  display: block;
-  margin: 0 auto;
-}
+
+  .login_pic {
+    display: block;
+    margin: 0 auto;
+  }
+
   input {
     /* margin:10px ; */
     width: auto;

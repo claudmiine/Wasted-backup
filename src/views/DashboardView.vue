@@ -37,59 +37,16 @@
     <v-alert v-if="nextCollection" shaped dark color="info" style="margin:0 20px;">
       Your next {{ nextCollection.name }} collection is on {{ formattedDate }}
     </v-alert>
-    <v-alert v-else shaped dark color="danger" style="margin: 20px;"> You don’t have collections soon </v-alert>
-
+    <v-alert v-else shaped dark color="#5CA44B" style="margin: 20px;"> You don’t any have collections soon </v-alert>
 
 <div class="contentArticles">
+      <div class="cardArticle" v-for="article in articles" :key="article.id">
+      <ArticleView :img-name="article.img_name" :category="article.category"
+        :title="article.title" :text="article.content">
+      </ArticleView>
 
-    <ArticleView img-name="earth.jpg" category="Recycling"
-      title="The Importance of Recycling: Reducing Waste and Protecting the Environment" text="          Recycling is an important practice that has gained significant attention in recent years. It involves the
-              collection and processing of materials that would otherwise be thrown away as waste, and transforming them
-              into new products. The practice of recycling helps to reduce waste, conserve natural resources, and protect
-              the environment.
-
-              One of the primary benefits of recycling is that it helps to conserve natural resources. For instance, the
-              recycling of paper helps to reduce the number of trees that are cut down to make new paper products. Recycling
-              also reduces the need for extracting and processing raw materials such as metal ores, which can have
-              significant environmental impacts.
-
-              Another significant benefit of recycling is that it helps to reduce waste. Recycling programs divert
-              significant amounts of waste from landfills, which helps to reduce greenhouse gas emissions and reduce the
-              amount of space needed for landfills. By reducing waste, recycling also helps to conserve valuable space and
-              resources.
-
-              Recycling also has a positive impact on the economy. Recycling programs create jobs in the collection,
-              processing, and manufacturing of recycled materials. The recycled materials can also be used to make new
-              products, which can be sold in the market, generating revenue and stimulating economic growth.
-
-              Despite the numerous benefits of recycling, many people still do not recycle regularly. This could be due to a
-              lack of knowledge about recycling, a lack of convenient recycling options, or simply a lack of motivation.
-              However, it is important for individuals to recognize the benefits of recycling and to take action by
-              recycling regularly.
-    " />
-
-
-
-    <br>
-    <ArticleView img-name="plastic.jpg" category="Sustainability | Nature"
-      title="The Earth's Enemy: How Single-Use Plastic Bags are Harming Our Planet" text=" Plastic bags are ubiquitous in our daily lives. They are cheap, convenient, and readily available. However,
-                the convenience of single-use plastic bags comes at a high cost to the environment. These bags are one of the
-                major sources of pollution on our planet, with devastating consequences for wildlife, ecosystems, and human
-                health.
-
-                The production and disposal of plastic bags have significant environmental impacts. Plastic bags are made from
-                non-renewable resources such as petroleum, and the production process requires significant amounts of energy
-                and water. After they are used, plastic bags are often disposed of improperly, and they can take hundreds of
-                years to decompose, if at all. Many plastic bags end up in landfills or littering our natural environment,
-                where they can cause harm for years to come.
-
-                One of the most significant impacts of plastic bags on the environment is their effect on wildlife. Plastic
-                bags can be mistaken for food by marine animals and birds, leading to ingestion and entanglement. This can
-                cause serious harm, including suffocation, strangulation, and digestive problems. Plastic bags can also have a
-                negative impact on ecosystems, as they can clog waterways, harm aquatic plants, and alter the natural balance
-                of ecosystems.
-      " />
-
+      <br>
+    </div>
 
     </div>
   </div>
@@ -99,7 +56,6 @@
 
 <script>
 
-import firebase from 'firebase/app';
 import ArticleView from '@/components/ArticleView.vue';
 
 export default {
@@ -107,6 +63,8 @@ export default {
     ArticleView,
   },
   data: () => ({
+    articles:[],
+    response: {},
     show: false,
     showDialog: false,
     selectedDay: {},
@@ -145,24 +103,29 @@ export default {
     rnd(a, b) {
       return Math.floor((b - a + 1) * Math.random()) + a
     },
-    created() {
-      console.log('we are here')
-      const db = firebase.firestore();
-      console.log('we are here 2')
-      console.log(db)
-      db.collection('events').get().then((querySnapshot) => {
-        const events = [];
-        console.log(querySnapshot)
-        querySnapshot.forEach((doc) => {
-          events.push({
-            id: doc.id,
-            ...doc.data(),
-          });
-        });
-        this.events = events;
-      });
-    },
+  },
 
+
+  created() {
+    // GET request using fetch with error handling
+    fetch("http://127.0.0.1:8000/api/")
+      .then(async response => {
+        const data = await response.json();
+        console.log(data)
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response statusText
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
+
+        this.articles = data;
+        console.log(data)
+      })
+      .catch(error => {
+        this.errorMessage = error;
+        console.error("There was an error!", error);
+      });
   },
 
   computed: {
@@ -202,11 +165,14 @@ export default {
 </script>
 
 <style>
-
-  .contentArticles{
-    display: flex;
-    flex-direction: row;
-  }
+.contentArticles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.cardArticle{
+  margin: 50px;
+}
 @media (max-width: 1024px) {
 
 
@@ -230,7 +196,8 @@ export default {
   v-card {
     margin-top: 20px;
   }
-  .contentArticles{
+
+  .contentArticles {
     display: flex;
     flex-direction: column;
   }

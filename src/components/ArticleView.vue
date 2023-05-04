@@ -7,7 +7,7 @@
     </v-card-title>
 
     <v-card-subtitle>
-      {{ category }}
+      {{ articleCategories[category] }}
     </v-card-subtitle>
 
     <v-card-actions>
@@ -42,7 +42,10 @@ export default {
 
     return {
       show: false,
-
+      articleCategories: {
+        '1':'Eco',
+        '2':'Sustainability',
+      }
     };
   },
   props: {
@@ -65,6 +68,12 @@ export default {
       type: String,
       required: true,
     }
+  },
+  methods: {
+    //getArticleCategory(id) {
+    //   return 
+    // }
+
   }
 
 }
